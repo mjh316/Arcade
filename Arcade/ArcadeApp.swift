@@ -25,7 +25,12 @@ struct ArcadeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                ContentView()
+                    .tabItem {
+                        Label("Test List", systemImage: "list.dash")
+                    }
+            }
         }
         .modelContainer(sharedModelContainer)
     }
