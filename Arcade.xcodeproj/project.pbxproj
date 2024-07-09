@@ -15,6 +15,8 @@
 		A14EF7212C3CA7E30095E50E /* ArcadeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14EF7202C3CA7E30095E50E /* ArcadeTests.swift */; };
 		A14EF72B2C3CA7E30095E50E /* ArcadeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14EF72A2C3CA7E30095E50E /* ArcadeUITests.swift */; };
 		A14EF72D2C3CA7E30095E50E /* ArcadeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14EF72C2C3CA7E30095E50E /* ArcadeUITestsLaunchTests.swift */; };
+		A14EF73A2C3CAD950095E50E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14EF7392C3CAD950095E50E /* API.swift */; };
+		A14EF73C2C3CAFBE0095E50E /* ArcadeSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14EF73B2C3CAFBE0095E50E /* ArcadeSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		A14EF7262C3CA7E30095E50E /* ArcadeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArcadeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14EF72A2C3CA7E30095E50E /* ArcadeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeUITests.swift; sourceTree = "<group>"; };
 		A14EF72C2C3CA7E30095E50E /* ArcadeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A14EF7392C3CAD950095E50E /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		A14EF73B2C3CAFBE0095E50E /* ArcadeSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,8 @@
 				A14EF7112C3CA7E20095E50E /* Item.swift */,
 				A14EF7132C3CA7E30095E50E /* Assets.xcassets */,
 				A14EF7152C3CA7E30095E50E /* Preview Content */,
+				A14EF7392C3CAD950095E50E /* API.swift */,
+				A14EF73B2C3CAFBE0095E50E /* ArcadeSession.swift */,
 			);
 			path = Arcade;
 			sourceTree = "<group>";
@@ -262,6 +268,8 @@
 			files = (
 				A14EF7102C3CA7E20095E50E /* ContentView.swift in Sources */,
 				A14EF7122C3CA7E20095E50E /* Item.swift in Sources */,
+				A14EF73A2C3CAD950095E50E /* API.swift in Sources */,
+				A14EF73C2C3CAFBE0095E50E /* ArcadeSession.swift in Sources */,
 				A14EF70E2C3CA7E20095E50E /* ArcadeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
