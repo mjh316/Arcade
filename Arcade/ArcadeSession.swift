@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct ArcadeSession: Decodable {
+struct ArcadeSession: Codable {
     let ok: Bool
-    let data: SessionData
+    let data: SessionData?
     
-    struct SessionData: Identifiable, Decodable {
+    struct SessionData: Codable {
         let id: String
         let createdAt: String // format: 2024-06-23T02:49:17.900Z
         let time: Int

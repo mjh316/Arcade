@@ -17,6 +17,11 @@
 		A14EF72D2C3CA7E30095E50E /* ArcadeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14EF72C2C3CA7E30095E50E /* ArcadeUITestsLaunchTests.swift */; };
 		A14EF73A2C3CAD950095E50E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14EF7392C3CAD950095E50E /* API.swift */; };
 		A14EF73C2C3CAFBE0095E50E /* ArcadeSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14EF73B2C3CAFBE0095E50E /* ArcadeSession.swift */; };
+		A14EF73E2C3D15650095E50E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14EF73D2C3D15650095E50E /* Settings.swift */; };
+		A14EF7402C3D2C4C0095E50E /* ArcadeStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14EF73F2C3D2C4C0095E50E /* ArcadeStats.swift */; };
+		A14EF7422C3D33380095E50E /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14EF7412C3D33380095E50E /* Home.swift */; };
+		A18BD0E82C3E7A0C000002E5 /* ArcadeHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18BD0E72C3E7A0C000002E5 /* ArcadeHistory.swift */; };
+		A18BD0EA2C3E7CAE000002E5 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18BD0E92C3E7CAE000002E5 /* History.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +55,11 @@
 		A14EF72C2C3CA7E30095E50E /* ArcadeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A14EF7392C3CAD950095E50E /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		A14EF73B2C3CAFBE0095E50E /* ArcadeSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeSession.swift; sourceTree = "<group>"; };
+		A14EF73D2C3D15650095E50E /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		A14EF73F2C3D2C4C0095E50E /* ArcadeStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeStats.swift; sourceTree = "<group>"; };
+		A14EF7412C3D33380095E50E /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		A18BD0E72C3E7A0C000002E5 /* ArcadeHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeHistory.swift; sourceTree = "<group>"; };
+		A18BD0E92C3E7CAE000002E5 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +117,11 @@
 				A14EF7152C3CA7E30095E50E /* Preview Content */,
 				A14EF7392C3CAD950095E50E /* API.swift */,
 				A14EF73B2C3CAFBE0095E50E /* ArcadeSession.swift */,
+				A14EF73D2C3D15650095E50E /* Settings.swift */,
+				A14EF73F2C3D2C4C0095E50E /* ArcadeStats.swift */,
+				A14EF7412C3D33380095E50E /* Home.swift */,
+				A18BD0E72C3E7A0C000002E5 /* ArcadeHistory.swift */,
+				A18BD0E92C3E7CAE000002E5 /* History.swift */,
 			);
 			path = Arcade;
 			sourceTree = "<group>";
@@ -267,9 +282,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A14EF7102C3CA7E20095E50E /* ContentView.swift in Sources */,
+				A14EF73E2C3D15650095E50E /* Settings.swift in Sources */,
+				A18BD0EA2C3E7CAE000002E5 /* History.swift in Sources */,
+				A18BD0E82C3E7A0C000002E5 /* ArcadeHistory.swift in Sources */,
 				A14EF7122C3CA7E20095E50E /* Item.swift in Sources */,
 				A14EF73A2C3CAD950095E50E /* API.swift in Sources */,
 				A14EF73C2C3CAFBE0095E50E /* ArcadeSession.swift in Sources */,
+				A14EF7402C3D2C4C0095E50E /* ArcadeStats.swift in Sources */,
+				A14EF7422C3D33380095E50E /* Home.swift in Sources */,
 				A14EF70E2C3CA7E20095E50E /* ArcadeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

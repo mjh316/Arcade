@@ -9,53 +9,32 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @Environment(\.modelContext) var modelContext
+    @StateObject var apiSettings = API()
 
     var body: some View {
-            NavigationSplitView {
-                List {
-                    ForEach(items) { item in
-                        NavigationLink {
-                            Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                        } label: {
-                            Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                        }
-                    }
-                    .onDelete(perform: deleteItems)
-                }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        EditButton()
-                    }
-                    ToolbarItem {
-                        Button(action: addItem) {
-                            Label("Add Item", systemImage: "plus")
-                        }
-                    }
-                }
-            } detail: {
-                Text("Select an item")
-            }
+        TabView {
+            Home().tabItem { Label("Home", systemImage: "house.fill") }
+            History().tabItem { Label("History", systemImage: "clock.fill") }
+            Settings().tabItem { Label("Settings", systemImage: "gearshape.fill") }
+        }.environmentObject(apiSettings)
+            .preferredColorScheme(.dark)
+            .animation(Animation.easeInOut(duration: 1.0), value: 1.0)
+            .transition(.slide)
+            .onAppear(perform: load)
     }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
+    
+    func load() {
+        let request = FetchDescriptor<APIData>()
+        let data = try? modelContext.fetch(request)
+        if data?.first != nil {
+            let first = data?.first
+            apiSettings.apiKey = first!.apiKey
+            apiSettings.slackId = first!.slackId
         }
     }
 }
 
 #Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+    ContentView().modelContainer(for: [APIData.self])
 }
