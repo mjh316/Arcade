@@ -22,6 +22,8 @@
 		A14EF7422C3D33380095E50E /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14EF7412C3D33380095E50E /* Home.swift */; };
 		A18BD0E82C3E7A0C000002E5 /* ArcadeHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18BD0E72C3E7A0C000002E5 /* ArcadeHistory.swift */; };
 		A18BD0EA2C3E7CAE000002E5 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18BD0E92C3E7CAE000002E5 /* History.swift */; };
+		A1E2F5482C424E5F00B1ACBB /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E2F5472C424E5F00B1ACBB /* Login.swift */; };
+		A1E2F54A2C425B7900B1ACBB /* ArcadeInfoHowTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E2F5492C425B7900B1ACBB /* ArcadeInfoHowTo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		A14EF7412C3D33380095E50E /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		A18BD0E72C3E7A0C000002E5 /* ArcadeHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeHistory.swift; sourceTree = "<group>"; };
 		A18BD0E92C3E7CAE000002E5 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		A1E2F5472C424E5F00B1ACBB /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		A1E2F5492C425B7900B1ACBB /* ArcadeInfoHowTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeInfoHowTo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,8 @@
 				A14EF7412C3D33380095E50E /* Home.swift */,
 				A18BD0E72C3E7A0C000002E5 /* ArcadeHistory.swift */,
 				A18BD0E92C3E7CAE000002E5 /* History.swift */,
+				A1E2F5472C424E5F00B1ACBB /* Login.swift */,
+				A1E2F5492C425B7900B1ACBB /* ArcadeInfoHowTo.swift */,
 			);
 			path = Arcade;
 			sourceTree = "<group>";
@@ -289,6 +295,8 @@
 				A14EF73A2C3CAD950095E50E /* API.swift in Sources */,
 				A14EF73C2C3CAFBE0095E50E /* ArcadeSession.swift in Sources */,
 				A14EF7402C3D2C4C0095E50E /* ArcadeStats.swift in Sources */,
+				A1E2F5482C424E5F00B1ACBB /* Login.swift in Sources */,
+				A1E2F54A2C425B7900B1ACBB /* ArcadeInfoHowTo.swift in Sources */,
 				A14EF7422C3D33380095E50E /* Home.swift in Sources */,
 				A14EF70E2C3CA7E20095E50E /* ArcadeApp.swift in Sources */,
 			);
@@ -457,11 +465,13 @@
 				DEVELOPMENT_TEAM = S728XXZRU7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -486,11 +496,13 @@
 				DEVELOPMENT_TEAM = S728XXZRU7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct History: View {
     @EnvironmentObject var apiSettings: API
-    @State var historyData: [ArcadeHistory.HistoryData] = []
+    @State var historyData: [ArcadeHistory.HistoryData]?
     var body: some View {
         VStack {
             HStack {
@@ -23,24 +23,28 @@ struct History: View {
             }
             Spacer()
             ScrollView {
-                VStack {
-                    ForEach(historyData, id: \.createdAt) { history in
-                        HStack {
-                            Text(history.work)
-                                .multilineTextAlignment(.leading)
-                            Spacer()
+                if historyData != nil {
+                    VStack {
+                        ForEach(historyData!, id: \.createdAt) { history in
+                            HStack {
+                                Text(history.work)
+                                    .multilineTextAlignment(.leading)
+                                Spacer()
+                            }
                         }
+                        .multilineTextAlignment(.leading)
+                        .padding(.horizontal, 10)
                     }
-                    .multilineTextAlignment(.leading)
-                    .padding(.horizontal, 10)
                 }
             }.padding(.horizontal, 40)
         }.task {
             do {
-                let historyData = try await apiSettings.getHistory()
-                print("History data: \(historyData.data  as [ArcadeHistory.HistoryData]?)")
-                if historyData.ok {
-                    self.historyData = historyData.data ?? []
+                if historyData == nil  {
+                    let historyData = try await apiSettings.getHistory()
+                    print("History data: \(historyData.data  as [ArcadeHistory.HistoryData]?)")
+                    if historyData.ok {
+                        self.historyData = historyData.data ?? []
+                    }
                 }
             } catch {
                 print("Error in History: \(error)")

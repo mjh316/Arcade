@@ -11,17 +11,23 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
     @StateObject var apiSettings = API()
-
+    
     var body: some View {
-        TabView {
-            Home().tabItem { Label("Home", systemImage: "house.fill") }
-            History().tabItem { Label("History", systemImage: "clock.fill") }
-            Settings().tabItem { Label("Settings", systemImage: "gearshape.fill") }
-        }.environmentObject(apiSettings)
-            .preferredColorScheme(.dark)
-            .animation(Animation.easeInOut(duration: 1.0), value: 1.0)
-            .transition(.slide)
-            .onAppear(perform: load)
+        if apiSettings.apiKey == "" {
+            Login().environmentObject(apiSettings)
+                .preferredColorScheme(.dark)
+                .animation(Animation.easeInOut(duration: 1.0), value: 1.0)
+        } else {
+            TabView {
+                Home().tabItem { Label("Home", systemImage: "house.fill") }
+                History().tabItem { Label("History", systemImage: "clock.fill") }
+                Settings().tabItem { Label("Settings", systemImage: "gearshape.fill") }
+            }.environmentObject(apiSettings)
+                .preferredColorScheme(.dark)
+                .animation(Animation.easeInOut(duration: 1.0), value: 1.0)
+                .transition(.slide)
+                .onAppear(perform: load)
+        }
     }
     
     func load() {

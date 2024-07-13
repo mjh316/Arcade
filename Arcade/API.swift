@@ -14,16 +14,19 @@ import SwiftData
 final class APIData {
     @Attribute(.unique) var apiKey: String
     var slackId: String
+    var shopURL: String?
 
-    init(apiKey: String, slackId: String) {
+    init(apiKey: String, slackId: String, shopURL: String? = "") {
         self.apiKey = apiKey
         self.slackId = slackId
+        self.shopURL = shopURL
     }
 }
 
 class API: ObservableObject {
     @Published var apiKey: String = ""
     @Published var slackId: String = ""
+    @Published var shopURL: String = ""
     
     
     func getSession() async throws -> ArcadeSession {

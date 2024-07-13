@@ -10,8 +10,8 @@ import SwiftUI
 
 struct Home: View {
     @EnvironmentObject var apiSettings: API
-    @State var numSessions: Int = 0
-    @State var totalMinutes: Int = 0
+    @State var numSessions: Int?
+    @State var totalMinutes: Int?
     
     var body: some View {
         VStack {
@@ -20,31 +20,38 @@ struct Home: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding(.horizontal, 40)
+                    .padding(.vertical, 20)
                 Spacer()
             }
             Spacer()
             ZStack {
-                Text("You've completed ")
-                +
-                Text("\(numSessions) sessions ")
-                    .foregroundStyle(.green)
-                +
-                Text("with a total of ")
-                +
-                Text("\(totalMinutes) minutes!")
-                    .foregroundStyle(.red)
+                if numSessions != nil {
+                    Text("You've completed ")
+                    +
+                    Text("\(numSessions!) sessions ")
+                        .foregroundStyle(.green)
+                    +
+                    Text("with a total of ")
+                    +
+                    Text("\(totalMinutes!) minutes!")
+                        .foregroundStyle(.red)
+                } else {
+                    Text("You haven't completed any sessions.")
+                }
             }.font(.title)
             
             Spacer()
         }.task {
             do {
-                print("api settings: \(apiSettings.apiKey)")
-                let sessionData = try await apiSettings.getSession()
-                print("Session data: \(sessionData.data as ArcadeSession.SessionData?)")
-                let statsData = try await apiSettings.getStats()
-                print("Stats data: \(statsData.data as ArcadeStats.StatData)")
-                self.numSessions = statsData.data.sessions
-                self.totalMinutes = statsData.data.total
+                if numSessions == nil {
+                    print("api settings: \(apiSettings.apiKey)")
+                    let sessionData = try await apiSettings.getSession()
+                    print("Session data: \(sessionData.data as ArcadeSession.SessionData?)")
+                    let statsData = try await apiSettings.getStats()
+                    print("Stats data: \(statsData.data as ArcadeStats.StatData)")
+                    self.numSessions = statsData.data.sessions
+                    self.totalMinutes = statsData.data.total
+                }
             } catch {
                 print("Error: \(error)")
             }
