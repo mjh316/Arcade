@@ -102,12 +102,13 @@ struct Login: View {
                         .cornerRadius(9999)
     //                    .border(.green)
                         .background(.hcRed)
+                        .opacity((isRunning || slackID == "" || apiKey == "" || shopURL == "") ? 0.5 : 1)
     //                    .padding(.horizontal, 20)
                         .clipShape(Capsule())
                         .fontWeight(.bold)
                         .font(.title2)
                         .opacity(isRunning ? 0.5 : 1)
-                }).disabled(isRunning)
+                }).disabled(isRunning || slackID == "" || apiKey == "" || shopURL == "" )
                     .alert("Your information failed! Either double-check or try again later, if you've hit the rate limit.", isPresented: $fetchError) {
                         Button("OK", role: .cancel) {}
                     }
