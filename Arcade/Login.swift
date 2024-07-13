@@ -15,6 +15,8 @@ struct Login: View {
     @State var slackID: String = ""
     @State var shopURL: String = ""
     
+    @State var isRunning = false
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -64,18 +66,29 @@ struct Login: View {
                 
                 Spacer()
                 
-                Button("Continue", systemImage: "arrow.right") {
-                    
-                }
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: 500, maxHeight: 60)
-                    .cornerRadius(9999)
-//                    .border(.green)
-                    .background(.hcRed)
-//                    .padding(.horizontal, 20)
-                    .clipShape(Capsule())
-                    .fontWeight(.bold)
-                    .font(.title2)
+                Button(action: {
+                    isRunning = true
+                    Task {
+                        do {
+                            try await Task.sleep(for: .seconds(2))
+                        } catch {
+                            print("error: \(error)")
+                        }
+                        isRunning = false
+                    }
+                }, label: {
+                    Text("Continue →")
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: 500, maxHeight: 60)
+                        .cornerRadius(9999)
+    //                    .border(.green)
+                        .background(.hcRed)
+    //                    .padding(.horizontal, 20)
+                        .clipShape(Capsule())
+                        .fontWeight(.bold)
+                        .font(.title2)
+                        .opacity(isRunning ? 0.5 : 1)
+                }).disabled(isRunning)
                 Spacer(minLength: 10)
                 
             }
