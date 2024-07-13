@@ -10,8 +10,8 @@ import SwiftUI
 
 struct Home: View {
     @EnvironmentObject var apiSettings: API
-    @State var numSessions: Int?
-    @State var totalMinutes: Int?
+    @Binding var numSessions: Int?
+    @Binding var totalMinutes: Int?
     
     var body: some View {
         VStack {
@@ -61,5 +61,12 @@ struct Home: View {
 
 
 #Preview {
-    Home().environmentObject(API()).preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+    struct Preview: View {
+        @State var numSessions: Int? = 0
+        @State var totalMinutes: Int? = 0
+        var body: some View {
+            Home(numSessions: $numSessions, totalMinutes: $totalMinutes).environmentObject(API()).preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+        }
+    }
+    return Preview()
 }

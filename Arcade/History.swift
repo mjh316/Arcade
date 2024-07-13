@@ -10,7 +10,7 @@ import SwiftUI
 
 struct History: View {
     @EnvironmentObject var apiSettings: API
-    @State var historyData: [ArcadeHistory.HistoryData]?
+    @Binding var historyData: [ArcadeHistory.HistoryData]?
     var body: some View {
         VStack {
             HStack {
@@ -54,7 +54,13 @@ struct History: View {
 }
 
 #Preview {
-    History()
-        .environmentObject(API())
-        .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+    struct Preview: View {
+        @State var historyData: [ArcadeHistory.HistoryData]?
+        var body: some View {
+            History(historyData: $historyData)
+                .environmentObject(API())
+                .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+        }
+    }
+    return Preview()
 }

@@ -14,9 +14,9 @@ import SwiftData
 final class APIData {
     @Attribute(.unique) var apiKey: String
     var slackId: String
-    var shopURL: String?
+    var shopURL: String
 
-    init(apiKey: String, slackId: String, shopURL: String? = "") {
+    init(apiKey: String, slackId: String, shopURL: String) {
         self.apiKey = apiKey
         self.slackId = slackId
         self.shopURL = shopURL

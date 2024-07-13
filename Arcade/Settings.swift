@@ -23,11 +23,14 @@ struct Settings: View {
                     TextField(text: $apiSettings.slackId, prompt: Text("Slack Member ID")) {
                         Text("Slack Member ID")
                     }
+                    TextField(text: $apiSettings.shopURL, prompt: Text("Arcade Shop URL")) {
+                        Text("Arcade Shop URL")
+                    }
                     Button(action: {
                         print("Starting to save API data...")
                         do {
                             try modelContext.delete(model: APIData.self)
-                            modelContext.insert(APIData(apiKey: apiSettings.apiKey, slackId: apiSettings.slackId))
+                            modelContext.insert(APIData(apiKey: apiSettings.apiKey, slackId: apiSettings.slackId, shopURL: apiSettings.shopURL))
                             try modelContext.save()
                         } catch {
                             print("Failed to save api data")
@@ -36,7 +39,19 @@ struct Settings: View {
                     }, label: {
                         Text("Save")
                     })
-                    .disabled(apiSettings.apiKey.isEmpty || apiSettings.slackId.isEmpty)
+                    .disabled(apiSettings.apiKey.isEmpty || apiSettings.slackId.isEmpty || apiSettings.shopURL.isEmpty)
+                    
+                    Button(action: {
+                        do {
+                            try modelContext.delete(model: APIData.self)
+                            print("deleted!")
+                        } catch {
+                            print("error deleting: \(error)")
+                        }
+                    }, label: {
+                        Text("Delete")
+                            .foregroundStyle(.red)
+                    })
                 }
             }
         }.preferredColorScheme(.dark)

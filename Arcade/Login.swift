@@ -16,6 +16,7 @@ struct Login: View {
     @State var shopURL: String = ""
     
     @State var isRunning = false
+    @State var fetchError = false
     
     var body: some View {
         NavigationStack {
@@ -49,7 +50,8 @@ struct Login: View {
                         TextField("U0xxxxxxx", text: $slackID)
                     }
                     Section(header: Text("Arcade Shop URL").fontDesign(.rounded)) {
-                        TextField("hackclub.com/arcade/[airtableID]/shop/", text: $shopURL)
+                        TextField("", text: $shopURL, prompt: Text(verbatim: "https://hackclub.com/arcade/[...]/shop/"))
+                        
                     }
                 }.scrollContentBackground(.hidden)
                     .padding(0)
@@ -70,9 +72,26 @@ struct Login: View {
                     isRunning = true
                     Task {
                         do {
-                            try await Task.sleep(for: .seconds(2))
+                            let api = API()
+                            api.apiKey = apiKey.trimmingCharacters(in: .whitespacesAndNewlines)
+                            api.slackId = slackID.trimmingCharacters(in: .whitespacesAndNewlines)
+                            api.shopURL = shopURL.trimmingCharacters(in: .whitespacesAndNewlines)
+                            
+                            // sanity check
+                            // also note that this doesn't check shopurl
+                            let session = try await api.getSession()
+                            if (session.ok) {
+                                try modelContext.delete(model: APIData.self)
+                                modelContext.insert(APIData(apiKey: apiKey, slackId: slackID, shopURL: shopURL))
+                                apiSettings.apiKey = apiKey.trimmingCharacters(in: .whitespacesAndNewlines)
+                                apiSettings.slackId = slackID.trimmingCharacters(in: .whitespacesAndNewlines)
+                                apiSettings.shopURL = shopURL.trimmingCharacters(in: .whitespacesAndNewlines)
+                            } else {
+                                fetchError = true
+                            }
                         } catch {
                             print("error: \(error)")
+                            fetchError = true
                         }
                         isRunning = false
                     }
@@ -89,6 +108,9 @@ struct Login: View {
                         .font(.title2)
                         .opacity(isRunning ? 0.5 : 1)
                 }).disabled(isRunning)
+                    .alert("Your information failed! Either double-check or try again later, if you've hit the rate limit.", isPresented: $fetchError) {
+                        Button("OK", role: .cancel) {}
+                    }
                 Spacer(minLength: 10)
                 
             }
