@@ -32,11 +32,27 @@ struct History: View {
                             NavigationLink {
                                 SessionDetail()
                             } label: {
-                                Text("placeholder \(count)")
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(Color.hcDark)
+                                    HStack {
+                                        VStack {
+                                            Text(verbatim: "Sunshine Interpreter Part 1")
+                                                .fontWeight(.bold)
+                                                .foregroundStyle(.white)
+                                            Text("7/24/2024 - 8:32 PM")
+                                                .foregroundStyle(.white)
+                                        }
+                                        Spacer()
+                                        Text("→")
+                                        .foregroundStyle(.white)
+                                    }.padding()
+                                }
                             }
                         }
                     })
                 }
+                .scrollIndicators(.hidden)
                 .padding(.horizontal, 50)
                 //            HStack {
                 //                Text("History")
