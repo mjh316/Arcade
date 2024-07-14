@@ -11,6 +11,14 @@ import SwiftUI
 struct History: View {
     @EnvironmentObject var apiSettings: API
     @Binding var historyData: [ArcadeHistory.HistoryData]?
+    
+    let history: [ArcadeHistory.HistoryData] = [
+        ArcadeHistory.HistoryData(createdAt: "2024-06-23T02:49:17.900Z", time: 42, elapsed: 60, goal: "IPad!", ended: true, work: "Sunshine Interpreter Part 1"),
+        ArcadeHistory.HistoryData(createdAt: "2024-06-23T02:49:17.900Z", time: 42, elapsed: 60, goal: "IPad!", ended: true, work: "Sunshine Interpreter Part 1"),
+        ArcadeHistory.HistoryData(createdAt: "2024-06-23T02:49:17.900Z", time: 42, elapsed: 60, goal: "IPad!", ended: true, work: "Sunshine Interpreter Part 1"),
+        ArcadeHistory.HistoryData(createdAt: "2024-06-23T02:49:17.900Z", time: 42, elapsed: 60, goal: "IPad!", ended: true, work: "Sunshine Interpreter Part 1")
+    ]
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -28,20 +36,26 @@ struct History: View {
                 }.padding(.horizontal, 50)
                 ScrollView {
                     LazyVStack(alignment: .leading, content: {
-                        ForEach(1...10, id: \.self) { count in
+                        ForEach(historyData?.sorted {$0.createdAt > $1.createdAt} ?? [], id: \.createdAt) { session in
                             NavigationLink {
-                                SessionDetail()
+                                SessionDetail(sessionData: session)
                             } label: {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 10)
                                         .fill(Color.hcDark)
                                     HStack {
                                         VStack {
-                                            Text(verbatim: "Sunshine Interpreter Part 1")
-                                                .fontWeight(.bold)
-                                                .foregroundStyle(.white)
-                                            Text("7/24/2024 - 8:32 PM")
-                                                .foregroundStyle(.white)
+                                            HStack {
+                                                Text(verbatim: session.work)
+                                                    .fontWeight(.bold)
+                                                    .foregroundStyle(.white)
+                                                Spacer()
+                                            }
+                                            HStack {
+                                                Text(session.createdAt)
+                                                    .foregroundStyle(.white)
+                                                Spacer()
+                                            }
                                         }
                                         Spacer()
                                         Text("→")
