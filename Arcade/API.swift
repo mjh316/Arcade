@@ -28,6 +28,20 @@ class API: ObservableObject {
     @Published var slackId: String = ""
     @Published var shopURL: String = ""
     
+    static func getStatusCheck() async throws -> APIStatus {
+        guard let url = URL(string: "https://hackhour.hackclub.com/status") else {
+            fatalError("Missing URL in getStatusCheck()")
+        }
+        
+        let request = URLRequest(url: url)
+        
+        let (data, _) = try await URLSession.shared.data(for: request)
+        
+        let statsResult = try JSONDecoder().decode(APIStatus.self, from: data)
+        
+        return statsResult
+    }
+    
     
     func getSession() async throws -> ArcadeSession {
         guard let url = URL(string: "https://hackhour.hackclub.com/api/session/\(slackId)") else  {fatalError("Missing URL in getSession()")}
