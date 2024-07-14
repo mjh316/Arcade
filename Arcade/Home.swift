@@ -146,6 +146,7 @@ struct Home: View {
                                     try await getAPIStatus()
                                 } catch {
                                     print("Error in api check timer: \(error)")
+                                    apiStatus = "Error: failed to connect to API"
                                 }
                             }
                         }

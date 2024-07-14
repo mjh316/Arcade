@@ -21,6 +21,7 @@
 		A14EF7402C3D2C4C0095E50E /* ArcadeStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14EF73F2C3D2C4C0095E50E /* ArcadeStats.swift */; };
 		A14EF7422C3D33380095E50E /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14EF7412C3D33380095E50E /* Home.swift */; };
 		A157647A2C44588700D5909A /* APIStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15764792C44588700D5909A /* APIStatus.swift */; };
+		A157647C2C44644600D5909A /* SessionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A157647B2C44644600D5909A /* SessionDetail.swift */; };
 		A18BD0E82C3E7A0C000002E5 /* ArcadeHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18BD0E72C3E7A0C000002E5 /* ArcadeHistory.swift */; };
 		A18BD0EA2C3E7CAE000002E5 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18BD0E92C3E7CAE000002E5 /* History.swift */; };
 		A1E2F5482C424E5F00B1ACBB /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E2F5472C424E5F00B1ACBB /* Login.swift */; };
@@ -62,6 +63,7 @@
 		A14EF73F2C3D2C4C0095E50E /* ArcadeStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeStats.swift; sourceTree = "<group>"; };
 		A14EF7412C3D33380095E50E /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		A15764792C44588700D5909A /* APIStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIStatus.swift; sourceTree = "<group>"; };
+		A157647B2C44644600D5909A /* SessionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetail.swift; sourceTree = "<group>"; };
 		A18BD0E72C3E7A0C000002E5 /* ArcadeHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeHistory.swift; sourceTree = "<group>"; };
 		A18BD0E92C3E7CAE000002E5 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		A1E2F5472C424E5F00B1ACBB /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				A14EF73F2C3D2C4C0095E50E /* ArcadeStats.swift */,
 				A14EF7412C3D33380095E50E /* Home.swift */,
 				A18BD0E72C3E7A0C000002E5 /* ArcadeHistory.swift */,
+				A157647B2C44644600D5909A /* SessionDetail.swift */,
 				A18BD0E92C3E7CAE000002E5 /* History.swift */,
 				A1E2F5472C424E5F00B1ACBB /* Login.swift */,
 				A1E2F5492C425B7900B1ACBB /* ArcadeInfoHowTo.swift */,
@@ -295,6 +298,7 @@
 				A18BD0EA2C3E7CAE000002E5 /* History.swift in Sources */,
 				A18BD0E82C3E7A0C000002E5 /* ArcadeHistory.swift in Sources */,
 				A14EF7122C3CA7E20095E50E /* Item.swift in Sources */,
+				A157647C2C44644600D5909A /* SessionDetail.swift in Sources */,
 				A14EF73A2C3CAD950095E50E /* API.swift in Sources */,
 				A14EF73C2C3CAFBE0095E50E /* ArcadeSession.swift in Sources */,
 				A14EF7402C3D2C4C0095E50E /* ArcadeStats.swift in Sources */,

@@ -12,42 +12,71 @@ struct History: View {
     @EnvironmentObject var apiSettings: API
     @Binding var historyData: [ArcadeHistory.HistoryData]?
     var body: some View {
-        VStack {
-            HStack {
-                Text("History")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.horizontal, 40)
-                    .padding(.vertical, 20)
-                Spacer()
-            }
-            Spacer()
-            ScrollView {
-                if historyData != nil {
-                    VStack {
-                        ForEach(historyData!, id: \.createdAt) { history in
-                            HStack {
-                                Text(history.work)
-                                    .multilineTextAlignment(.leading)
-                                Spacer()
+        NavigationStack {
+            VStack {
+                Image("flag-orpheus-left")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: 244, maxHeight: 129)
+                    .offset(x: -100, y: 5)
+                HStack {
+                    Text("Sessions")
+                        .font(.system(size: 40))
+                        .fontDesign(.rounded)
+                        .fontWeight(.bold)
+                    Spacer()
+                }.padding(.horizontal, 50)
+                ScrollView {
+                    LazyVStack(alignment: .leading, content: {
+                        ForEach(1...10, id: \.self) { count in
+                            NavigationLink {
+                                SessionDetail()
+                            } label: {
+                                Text("placeholder \(count)")
                             }
                         }
-                        .multilineTextAlignment(.leading)
-                        .padding(.horizontal, 10)
-                    }
+                    })
                 }
-            }.padding(.horizontal, 40)
-        }.task {
-            do {
-                if historyData == nil  {
-                    let historyData = try await apiSettings.getHistory()
-                    print("History data: \(historyData.data  as [ArcadeHistory.HistoryData]?)")
-                    if historyData.ok {
-                        self.historyData = historyData.data ?? []
+                .padding(.horizontal, 50)
+                //            HStack {
+                //                Text("History")
+                //                    .font(.largeTitle)
+                //                    .fontWeight(.bold)
+                //                    .padding(.horizontal, 40)
+                //                    .padding(.vertical, 20)
+                //                Spacer()
+                //            }
+                //            Spacer()
+                //            ScrollView {
+                //                if historyData != nil {
+                //                    VStack {
+                //                        ForEach(historyData!, id: \.createdAt) { history in
+                //                            HStack {
+                //                                Text(history.work)
+                //                                    .multilineTextAlignment(.leading)
+                //                                Spacer()
+                //                            }
+                //                        }
+                //                        .multilineTextAlignment(.leading)
+                //                        .padding(.horizontal, 10)
+                //                    }
+                //                }
+                //            }.padding(.horizontal, 40)
+            }
+            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
+            .background(.hc)
+            .task {
+                do {
+                    if historyData == nil  {
+                        let historyData = try await apiSettings.getHistory()
+                        print("History data: \(historyData.data  as [ArcadeHistory.HistoryData]?)")
+                        if historyData.ok {
+                            self.historyData = historyData.data ?? []
+                        }
                     }
+                } catch {
+                    print("Error in History: \(error)")
                 }
-            } catch {
-                print("Error in History: \(error)")
             }
         }
     }
