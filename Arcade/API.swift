@@ -8,8 +8,6 @@
 import Foundation
 import SwiftData
 
-// 3c4374f3-928f-4f5f-8524-27506a20d008
-// U05RW878ZEW
 @Model
 final class APIData {
     @Attribute(.unique) var apiKey: String
