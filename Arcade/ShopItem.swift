@@ -1,18 +1,11 @@
-//
-//  ShopItem.swift
-//  Arcade
-//
-//  Created by Justin Huang on 7/14/24.
-//
-
 // This file was generated from JSON Schema using quicktype, do not modify it directly.
 // To parse the JSON, add this file to your project and do:
 //
-//   let welcome = try? JSONDecoder().decode(ShopItem.self, from: jsonData)
+//   let shopItem = try? JSONDecoder().decode(ShopItem.self, from: jsonData)
 
 import Foundation
 
-// MARK: - Welcome
+// MARK: - ShopItem
 struct ShopItem: Codable {
     let props: Props
     let page: String
@@ -58,7 +51,7 @@ struct AvailableItem: Codable {
     let imageURL: String
     let maxOrderQuantity: Int
     let stock: Int?
-    let category: [Category]
+    let category: CategoryUnion
 
     enum CodingKeys: String, CodingKey {
         case name = "Name"
@@ -75,7 +68,35 @@ struct AvailableItem: Codable {
     }
 }
 
-enum Category: String, Codable {
+enum CategoryUnion: Codable {
+    case enumArray([CategoryElement])
+    case string(String)
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let x = try? container.decode([CategoryElement].self) {
+            self = .enumArray(x)
+            return
+        }
+        if let x = try? container.decode(String.self) {
+            self = .string(x)
+            return
+        }
+        throw DecodingError.typeMismatch(CategoryUnion.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for CategoryUnion"))
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .enumArray(let x):
+            try container.encode(x)
+        case .string(let x):
+            try container.encode(x)
+        }
+    }
+}
+
+enum CategoryElement: String, Codable {
     case artSupplies = "Art Supplies"
     case embeddedDevices = "Embedded Devices"
     case hardware = "Hardware"

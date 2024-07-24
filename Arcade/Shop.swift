@@ -48,6 +48,37 @@ struct ShopItemList: View {
     }
 }
 
+struct ShopItemGrid: View {
+    let item: AvailableItem
+    let curHours: Int
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 20)
+                .fill(item.costHours > curHours ? .hcRed : .hcDark)
+                .opacity(item.stock == 0 ? 0.25 : 1)
+            VStack {
+                AsyncImage(url: URL(string: item.imageURL)) { image in
+                    image.resizable()
+                } placeholder: {
+                    ProgressView()
+                }
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 128, height: 128)
+                
+                Spacer()
+                
+                Text("\(item.name)")
+                    .font(.system(size: 18))
+                    .fontWeight(.semibold)
+                    .fontDesign(.rounded)
+                Text("\(item.costHours) 🎟️")
+                    .fontWeight(.medium)
+                    .fontDesign(.rounded)
+            }
+        }
+    }
+}
+
 struct Shop: View {
     @EnvironmentObject var apiSettings: API
     @State var shopItem: ShopItem?
@@ -63,6 +94,8 @@ struct Shop: View {
         // print("HTML: \(myHTMLString)")
         return myHTMLString
     }
+    
+    @State var shopViewModeGrid: Bool = true
 
     var body: some View {
         NavigationStack {
@@ -75,19 +108,35 @@ struct Shop: View {
                             .fontDesign(.rounded)
                             .padding(.top, 40)
                             .padding(.bottom, 20)
+                        Toggle("Grid Mode", systemImage: "squareshape.split.3x3", isOn: $shopViewModeGrid)
+                            .padding(.horizontal, 50)
                         Spacer()
                         ScrollView {
-                            LazyVStack(alignment: .leading) {
-                                ForEach(shopItem!.props.pageProps.availableItems.sorted(by: { $0.costHours < $1.costHours }), id: \.id) { item in
-                                    NavigationLink {
-                                        ShopItemDetail(item: item)
-                                    } label: {
-                                        ShopItemList(item: item, curHours: shopItem!.props.pageProps.hoursBalance)
-                                            .foregroundStyle(.white)
+                            if !shopViewModeGrid {
+                                LazyVStack(alignment: .leading) {
+                                    ForEach(shopItem!.props.pageProps.availableItems.sorted(by: { $0.costHours < $1.costHours }), id: \.id) { item in
+                                        NavigationLink {
+                                            ShopItemDetail(item: item)
+                                        } label: {
+                                            ShopItemList(item: item, curHours: shopItem!.props.pageProps.hoursBalance)
+                                                .foregroundStyle(.white)
+                                        }
                                     }
                                 }
+                                .padding(.horizontal, 50)
                             }
-                            .padding(.horizontal, 50)
+                            else {
+                                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
+                                    ForEach(shopItem!.props.pageProps.availableItems.sorted(by: { $0.costHours < $1.costHours }), id: \.id) { item in
+                                        NavigationLink {
+                                            ShopItemDetail(item: item)
+                                        } label: {
+                                            ShopItemGrid(item: item, curHours: shopItem!.props.pageProps.hoursBalance)
+                                                .foregroundStyle(.white)
+                                        }
+                                    }
+                                }.padding(.horizontal, 50)
+                        }
                         }
                     }
                 } else {
@@ -108,6 +157,7 @@ struct Shop: View {
                     let endRange = html[html.index(html.startIndex, offsetBy: startIndex)...].range(of: scriptEnd)!
                     let endIndex = html.distance(from: html.startIndex, to: endRange.lowerBound)
                     let jsonSubstring = html[html.index(html.startIndex, offsetBy: startIndex)..<html.index(html.startIndex, offsetBy: endIndex)]
+                    print("jsonSubstring: \(jsonSubstring)")
                     let shopItem: ShopItem = try JSONDecoder().decode(ShopItem.self, from: jsonSubstring.data(using: .utf8)!)
                     self.shopItem = shopItem
                     print("hoursBalance: \(shopItem.props.pageProps.hoursBalance)")
