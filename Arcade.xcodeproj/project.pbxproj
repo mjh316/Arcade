@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A1148D9D2C5620B600A7515F /* Scraps.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1148D9C2C5620B600A7515F /* Scraps.swift */; };
+		A1148D9F2C5620D600A7515F /* ScrapbookUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1148D9E2C5620D600A7515F /* ScrapbookUser.swift */; };
 		A14EF70E2C3CA7E20095E50E /* ArcadeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14EF70D2C3CA7E20095E50E /* ArcadeApp.swift */; };
 		A14EF7102C3CA7E20095E50E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14EF70F2C3CA7E20095E50E /* ContentView.swift */; };
 		A14EF7122C3CA7E20095E50E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14EF7112C3CA7E20095E50E /* Item.swift */; };
@@ -49,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A1148D9C2C5620B600A7515F /* Scraps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scraps.swift; sourceTree = "<group>"; };
+		A1148D9E2C5620D600A7515F /* ScrapbookUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapbookUser.swift; sourceTree = "<group>"; };
 		A14EF70A2C3CA7E20095E50E /* Arcade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Arcade.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14EF70D2C3CA7E20095E50E /* ArcadeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeApp.swift; sourceTree = "<group>"; };
 		A14EF70F2C3CA7E20095E50E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -145,6 +149,8 @@
 				A15764872C448D7C00D5909A /* APIKeys.xcconfig */,
 				A15764832C448BF300D5909A /* ShopItem.swift */,
 				A15764852C448C2E00D5909A /* ShopItemDetail.swift */,
+				A1148D9C2C5620B600A7515F /* Scraps.swift */,
+				A1148D9E2C5620D600A7515F /* ScrapbookUser.swift */,
 			);
 			path = Arcade;
 			sourceTree = "<group>";
@@ -307,10 +313,12 @@
 				A14EF7102C3CA7E20095E50E /* ContentView.swift in Sources */,
 				A14EF73E2C3D15650095E50E /* Settings.swift in Sources */,
 				A15764842C448BF300D5909A /* ShopItem.swift in Sources */,
+				A1148D9D2C5620B600A7515F /* Scraps.swift in Sources */,
 				A18BD0EA2C3E7CAE000002E5 /* History.swift in Sources */,
 				A15764822C448BCD00D5909A /* Shop.swift in Sources */,
 				A18BD0E82C3E7A0C000002E5 /* ArcadeHistory.swift in Sources */,
 				A15764862C448C2E00D5909A /* ShopItemDetail.swift in Sources */,
+				A1148D9F2C5620D600A7515F /* ScrapbookUser.swift in Sources */,
 				A14EF7122C3CA7E20095E50E /* Item.swift in Sources */,
 				A157647C2C44644600D5909A /* SessionDetail.swift in Sources */,
 				A14EF73A2C3CAD950095E50E /* API.swift in Sources */,
@@ -484,7 +492,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Arcade/Preview Content\"";
-				DEVELOPMENT_TEAM = P6PV2R9443;
+				DEVELOPMENT_TEAM = S728XXZRU7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
@@ -498,8 +506,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.jh316.arcade;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = me.jh316.arcadestats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -515,7 +523,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Arcade/Preview Content\"";
-				DEVELOPMENT_TEAM = P6PV2R9443;
+				DEVELOPMENT_TEAM = S728XXZRU7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
@@ -529,8 +537,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.jh316.arcade;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = me.jh316.arcadestats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -50,6 +50,7 @@ struct ContentView: View {
             } else {
                 TabView {
                     Home(numSessions: $numSessions, totalMinutes: $totalMinutes).tabItem { Label("Home", systemImage: "house.fill") }
+                    Scraps()
                     History(historyData: $historyData).tabItem { Label("History", systemImage: "clock.fill") }
                     Shop().tabItem { Label("Shop", systemImage: "storefront.fill") }
                     Settings().tabItem { Label("Settings", systemImage: "gearshape.fill") }
